@@ -19,7 +19,7 @@
   "author": "Adam Weeden",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.2.6",
+    "@actions/core": "^1.9.1",
     "@actions/github": "^1.1.0",
     "js-yaml": "^3.13.1",
     "matcher": "^2.0.0"
@@ -29,7 +29,7 @@
     "@types/js-yaml": "^3.12.1",
     "@types/node": "^12.0.4",
     "jest": "^27.5.1",
-    "jest-extended": "^0.11.2",
+    "jest-extended": "^4.0.2",
     "nock": "^11.3.1",
     "ts-jest": "^27.1.4",
     "typescript": "^4.6.3"
