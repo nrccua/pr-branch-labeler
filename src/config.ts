@@ -7,7 +7,7 @@ import { ConfigEntry } from './ConfigEntry';
 const CONFIG_PATH = '.github';
 
 export async function getConfig(
-  github: github.GitHub,
+  octokit: ReturnType<typeof github.getOctokit>,
   fileName: string,
   context: Context.Context,
 ): Promise<ConfigEntry[]> {
@@ -20,11 +20,11 @@ export async function getConfig(
       ref: context.payload.pull_request!.head.sha,
     };
     core.debug(`Getting contents of ${JSON.stringify(configFile)}`);
-    const response = await github.repos.getContents(configFile);
+    const response = await octokit.rest.repos.getContent(configFile);
     if (Array.isArray(response.data)) {
       throw new Error(`${fileName} is not a file.`);
     }
-    if (response.data.content === undefined) {
+    if (!('content' in response.data) || response.data.content === undefined) {
       throw new Error(`${fileName} is empty.`);
     }
     return parseConfig(response.data.content);
@@ -41,7 +41,7 @@ export async function getConfig(
 function parseConfig(content: string): ConfigEntry[] {
   core.debug(`parseConfig ${content}`);
   const configObject = (yaml.load(Buffer.from(content, 'base64').toString()) ?? {}) as Record<string, string>;
-  if (configObject === {}) {
+  if (Object.keys(configObject).length === 0) {
     return [];
   }
 

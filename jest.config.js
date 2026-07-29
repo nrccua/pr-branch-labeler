@@ -2,7 +2,7 @@ module.exports = {
   clearMocks: true,
   moduleFileExtensions: ["js", "ts"],
   setupFilesAfterEnv: [
-    "jest-extended"
+    "jest-extended/all"
   ],
   testEnvironment: "node",
   testMatch: ["**/*.test.ts"],

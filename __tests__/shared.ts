@@ -8,8 +8,8 @@ jest.spyOn(core, 'info').mockImplementation(console.info);
 jest.spyOn(core, 'error').mockImplementation(console.error);
 jest.spyOn(core, 'warning').mockImplementation(console.warn);
 
-function encodeContent(content: Buffer | ArrayBuffer | SharedArrayBuffer) {
-  return Buffer.from(content).toString('base64');
+function encodeContent(content: Buffer) {
+  return content.toString('base64');
 }
 
 export function configFixture(fileName = 'config.yml') {
