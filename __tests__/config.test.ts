@@ -43,10 +43,10 @@ describe('Config file loader', () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
       .persist()
-      .get('/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml?ref=0123456')
+      .get('/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml?ref=0123456')
       .reply(200, configFixture());
 
-    const octokit = new github.GitHub('token');
+    const octokit = github.getOctokit('token');
 
     const config = await getConfig(octokit, 'pr-branch-labeler.yml', context);
 
@@ -60,10 +60,10 @@ describe('Config file loader', () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
       .persist()
-      .get('/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml?ref=0123456')
+      .get('/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml?ref=0123456')
       .reply(200, configFixture());
 
-    const octokit = new github.GitHub('token');
+    const octokit = github.getOctokit('token');
 
     const config = await getConfig(octokit, 'pr-branch-labeler.yml', context);
 
@@ -94,10 +94,10 @@ describe('Config file loader', () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
       .persist()
-      .get('/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml?ref=0123456')
+      .get('/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml?ref=0123456')
       .reply(200, configFixture('invalid-config.yml'));
 
-    const octokit = new github.GitHub('token');
+    const octokit = github.getOctokit('token');
 
     await expect(getConfig(octokit, 'pr-branch-labeler.yml', context)).rejects.toThrow(
       new Error('config.yml has invalid structure.'),
@@ -112,10 +112,10 @@ describe('Config file loader', () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
       .persist()
-      .get('/repos/Codertocat/Hello-World/contents/.github/test?ref=0123456')
+      .get('/repos/Codertocat/Hello-World/contents/.github%2Ftest?ref=0123456')
       .reply(200, []);
 
-    const octokit = new github.GitHub('token');
+    const octokit = github.getOctokit('token');
 
     await expect(getConfig(octokit, 'test', context)).rejects.toThrow(new Error('test is not a file.'));
 
@@ -128,10 +128,10 @@ describe('Config file loader', () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
       .persist()
-      .get('/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml?ref=0123456')
+      .get('/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml?ref=0123456')
       .reply(200, emptyConfigFixture());
 
-    const octokit = new github.GitHub('token');
+    const octokit = github.getOctokit('token');
 
     await expect(getConfig(octokit, 'pr-branch-labeler.yml', context)).rejects.toThrow(
       new Error('pr-branch-labeler.yml is empty.'),

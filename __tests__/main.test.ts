@@ -35,7 +35,7 @@ describe('PR Branch Labeler', () => {
   it('succeeds', async () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
-      .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+      .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
       .query({ ref: main.context.payload.pull_request.head.sha })
       .reply(200, configFixture());
 
@@ -65,7 +65,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'feature' label for 'feature/FOO-42-awesome-stuff' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -98,7 +98,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'support' label for 'support/FOO-42-assisting' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -131,7 +131,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'bugfix' label for 'bugfix/FOO-42-squash-bugs' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -162,7 +162,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'bugfix' label for 'hotfix/FOO-42-squash-bugs' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -193,7 +193,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'release' and 'fix' labels for 'bugfix/FOO-42-changes' to 'release/1.0.0'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -222,7 +222,7 @@ describe('PR Branch Labeler', () => {
     it("adds the '🧩 Subtask' label for 'feature/FOO-42-part' to 'feature/FOO-42-whole'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -253,7 +253,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'bugfixregex' label for 'bugfix-regex/FOO-42-squash-bugs' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -284,7 +284,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'bugfixregex' label for 'hotfix-regex/FOO-42-squash-bugs' to 'master'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -315,7 +315,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'releaseregex' and 'fixregex' labels for 'bugfix-regex/FOO-42-changes' to 'release-regex/1.0.0'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -344,7 +344,7 @@ describe('PR Branch Labeler', () => {
     it("adds the '🧩 Subtaskregex' label for 'feature-regex/FOO-42-part' to 'feature-regex/FOO-42-whole'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -373,7 +373,7 @@ describe('PR Branch Labeler', () => {
     it("adds the '1.0.0' label for 'feature-regex/FOO-42-part' to 'release-regexp/1.0.0'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -402,7 +402,7 @@ describe('PR Branch Labeler', () => {
     it("adds the 'sprint10' label for 'feature-regex/FOO-42-part' to 'sprint-regexp/10'", async () => {
       // Arrange
       const getConfigScope = nock('https://api.github.com')
-        .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+        .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
         .query({ ref: main.context.payload.pull_request.head.sha })
         .reply(200, configFixture());
 
@@ -432,7 +432,7 @@ describe('PR Branch Labeler', () => {
   it('uses the default config when no config was provided', async () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
-      .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+      .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
       .query({ ref: main.context.payload.pull_request.head.sha })
       .reply(404);
 
@@ -463,7 +463,7 @@ describe('PR Branch Labeler', () => {
   it("adds no labels if the branch doesn't match any patterns", async () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
-      .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+      .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
       .query({ ref: main.context.payload.pull_request.head.sha })
       .reply(200, configFixture());
 
@@ -491,7 +491,7 @@ describe('PR Branch Labeler', () => {
   it('throws an error when the provided config is invalid', async () => {
     // Arrange
     const getConfigScope = nock('https://api.github.com')
-      .get(`/repos/Codertocat/Hello-World/contents/.github/pr-branch-labeler.yml`)
+      .get(`/repos/Codertocat/Hello-World/contents/.github%2Fpr-branch-labeler.yml`)
       .query({ ref: main.context.payload.pull_request.head.sha })
       .reply(200, configFixture('invalid-config.yml'));
 
